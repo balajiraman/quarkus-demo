@@ -103,8 +103,9 @@ jobs:
 
   
   openshift-deploy-HomePC:
+    needs: openshift-build
     name: Deploy to Environment
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     environment: HomePC
 
     steps:
