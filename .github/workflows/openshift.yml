@@ -29,6 +29,7 @@
 # Also see our GitHub organization, https://github.com/redhat-actions/
 
 name: OpenShift
+on: [push, workflow_dispatch, pull_request]
 
 # ⬇️  Modify the fields marked with ⬇️ to fit your project, and create any secrets that are referenced.
 # https://docs.github.com/en/free-pro-team@latest/actions/reference/encrypted-secrets
