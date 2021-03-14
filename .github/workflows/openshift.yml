@@ -59,7 +59,7 @@ on: [pull_request]
 jobs:
   openshift-ci-cd:
     name: Build and deploy to OpenShift
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     environment: HomePC
 
     steps:
