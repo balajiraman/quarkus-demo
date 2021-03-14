@@ -52,7 +52,7 @@ env:
 
   # If you wish to manually provide the APP_NAME and TAG, set them here, otherwise they will be auto-detected.
   APP_NAME: "quarkus-demo"
-  IMAGE_TAG: "v1"
+  IMAGE_TAG: ""
 
 on: [pull_request]
 
@@ -90,7 +90,7 @@ jobs:
       uses: redhat-actions/push-to-registry@v1
       with:
         image: ${{ env.APP_NAME }}
-        tag: ${{ env.TAG }}
+        tag: ${{ env.INAGE_TAG }}
         registry: ${{ env.REGISTRY }}
         username: ${{ env.REGISTRY_USER }}
         password: ${{ env.REGISTRY_PASSWORD }}
