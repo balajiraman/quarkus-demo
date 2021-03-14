@@ -57,9 +57,10 @@ env:
 on: [pull_request]
 
 jobs:
-  openshift-ci-cd:
-    name: Build and deploy to OpenShift
-    runs-on: self-hosted
+
+  openshift-build:
+    name: Build Containers
+    runs-on: ubuntu-latest
     environment: HomePC
 
     steps:
@@ -100,6 +101,13 @@ jobs:
     # The GitHub Ubuntu runner already includes oc.
     # Otherwise, https://github.com/redhat-actions/oc-installer#readme is available.
 
+  
+  openshift-deploy-HomePC:
+    name: Deploy to Environment
+    runs-on: ubuntu-latest
+    environment: HomePC
+
+    steps:
     # https://github.com/redhat-actions/oc-login#readme
     - name: Log in to OpenShift
       uses: redhat-actions/oc-login@v1
