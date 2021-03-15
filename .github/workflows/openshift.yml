@@ -80,9 +80,9 @@ jobs:
       uses: redhat-actions/s2i-build@main
       with:
         path_context: '.'
-        tag: ${{ env.IMAGE_TAG }}
         builder_image: 'registry.access.redhat.com/openjdk/openjdk-11-rhel7'
         image_name: ${{ env.APP_NAME }}
+        image_tag: ${{ env.IMAGE_TAG }}
   
     # https://github.com/redhat-actions/push-to-registry#readme
     - name: Push to registry
