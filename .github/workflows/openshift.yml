@@ -90,7 +90,7 @@ jobs:
       uses: redhat-actions/push-to-registry@v1
       with:
         image: ${{ env.APP_NAME }}
-        tag: ${{ env.INAGE_TAG }}
+        tag: ${{ env.IMAGE_TAG }}
         registry: ${{ env.REGISTRY }}
         username: ${{ env.REGISTRY_USER }}
         password: ${{ env.REGISTRY_PASSWORD }}
