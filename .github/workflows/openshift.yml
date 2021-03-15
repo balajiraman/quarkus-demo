@@ -63,7 +63,7 @@ jobs:
     runs-on: ubuntu-latest
     environment: HomePC
     outputs:
-      registry-path: ${{ steps.push-to-quay.outputs.registry-path }}
+      registry-path: ${{ steps.push-to-registry.outputs.registry-path }}
 
     steps:
     - uses: actions/checkout@v2
@@ -98,7 +98,7 @@ jobs:
         password: ${{ env.REGISTRY_PASSWORD }}
  
     - name: Use the image
-      run: echo "New image has been pushed to ${{ steps.push-to-quay.outputs.registry-paths }}"
+      run: echo "New image has been pushed to ${{ steps.push-to-registry.outputs.registry-paths }}"
 
     # The path the image was pushed to is now stored in ${{ steps.push-to-registry.outputs.registry-path }}
 
