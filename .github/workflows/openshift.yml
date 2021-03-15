@@ -62,6 +62,8 @@ jobs:
     name: Build Containers
     runs-on: ubuntu-latest
     environment: HomePC
+    outputs:
+      registry-path: ${{ steps.push-to-quay.outputs.registry-path }}
 
     steps:
     - uses: actions/checkout@v2
@@ -94,6 +96,9 @@ jobs:
         registry: ${{ env.REGISTRY }}
         username: ${{ env.REGISTRY_USER }}
         password: ${{ env.REGISTRY_PASSWORD }}
+ 
+    - name: Use the image
+      run: echo "New image has been pushed to ${{ steps.push-to-quay.outputs.registry-paths }}"
 
     # The path the image was pushed to is now stored in ${{ steps.push-to-registry.outputs.registry-path }}
 
@@ -120,9 +125,12 @@ jobs:
 
     # This step should create a deployment, service, and route to run your app and expose it to the internet.
     # Feel free to replace this with 'oc apply', 'helm install', or however you like to deploy your app.
+    - name: Use the image
+      run: echo "Using image that has been pushed to ${{ needs.openshift-build.registry-path }}"
+    
     - name: Create and expose app
       run: |
-        export IMAGE="${{ steps.push-to-registry.outputs.registry-path }}"
+        export IMAGE="${{ needs.openshift-build.registry-path }}"
         export PORT=${{ env.APP_PORT }}
 
         export SELECTOR="app=${{ env.APP_NAME }}"
